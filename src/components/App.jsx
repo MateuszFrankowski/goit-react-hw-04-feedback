@@ -2,7 +2,7 @@ import { Statistics } from './Feedback/Statistics.js';
 import { Notification } from './Feedback/Notification.js';
 import { FeedbackOptions } from './Feedback/FeedbackOptions.js';
 import { Section } from './Feedback/Section.js';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 export const App = () => {
   const [good, setGood] = useState(0);
   const [neutral, setNeutral] = useState(0);
