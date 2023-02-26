@@ -5,9 +5,10 @@ import React, { Component } from 'react';
 export class FeedbackOptions extends Component {
   render() {
     const { options, onLeaveFeedback } = this.props;
+
     return (
       <div className={css.container}>
-        {options.map(option => (
+        {Object.keys(options).map(option => (
           <button
             className={css.btn}
             key={option}
