@@ -14,17 +14,11 @@ export const App = () => {
     if (option === 'bad') return setBad(bad + 1);
   };
 
-  const countTotalFeedback = () => {
-    return good + neutral + bad;
-  };
-  const countPositiveFeedbackPercentage = () => {
-    const value = Math.round((good / countTotalFeedback()) * 100);
-    const fedbackPercentage = !!value ? value : 0;
+  const total = good + neutral + bad;
+  const countPositiveFeedbackPercentage =
+    total > 0 ? Math.round((good / total) * 100) : 0;
 
-    return fedbackPercentage + '%';
-  };
-
-  const dataAvailable = !!countTotalFeedback();
+  const dataAvailable = !!countPositiveFeedbackPercentage;
   return (
     <div
       style={{
@@ -45,8 +39,8 @@ export const App = () => {
         {dataAvailable && (
           <Statistics
             data={({ good }, { neutral }, { bad })}
-            total={countTotalFeedback()}
-            positivePercentage={countPositiveFeedbackPercentage()}
+            total={total}
+            positivePercentage={countPositiveFeedbackPercentage}
           />
         )}
         {!dataAvailable && <Notification message={'There is no feedback'} />}
